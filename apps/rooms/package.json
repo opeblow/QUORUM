@@ -1,0 +1,36 @@
+{
+  "name": "@quorum/rooms",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch --env-file-if-exists=../../.env.local --env-file-if-exists=.env src/main.ts",
+    "start": "node --env-file-if-exists=.env dist/main.js",
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@fastify/websocket": "11.3.4",
+    "@mozaik-ai/core": "4.1.0",
+    "@quorum/db": "workspace:*",
+    "@quorum/engine": "workspace:*",
+    "@quorum/protocol": "workspace:*",
+    "drizzle-orm": "0.45.4",
+    "fastify": "5.12.7",
+    "jose": "6.2.12",
+    "mem0ai": "3.3.1",
+    "pino": "10.4.0",
+    "postgres": "3.4.9",
+    "ws": "8.22.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "@types/ws": "8.18.2",
+    "tsup": "8.5.1",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vitest": "5.0.5"
+  }
+}
