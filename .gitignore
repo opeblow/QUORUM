@@ -1,0 +1,58 @@
+# Quorum monorepo: one ignore file for the whole tree.
+
+# Dependencies
+node_modules/
+.pnpm-store/
+.pnp
+.pnp.*
+
+# Build output
+dist/
+build/
+out/
+.next/
+.turbo/
+.vercel/
+.wrangler/
+*.tsbuildinfo
+next-env.d.ts
+
+# Tests and coverage
+coverage/
+test-results/
+playwright-report/
+blob-report/
+**/e2e/.artifacts/
+.playwright/
+
+# Secrets: never commit. Only the documented example is tracked.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local data and logs
+.data/
+.audit/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Rendered media (large; regenerate with production/product-launch-film)
+*.mp4
+*.mov
+*.wav
+
+# OS and editors
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+*.swp
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Local-only launch assets: kept out of GitHub
+production/
