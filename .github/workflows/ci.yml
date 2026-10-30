@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Typecheck
+        run: |
+          for p in packages/protocol packages/db packages/engine apps/rooms; do (cd $p && npx tsc --noEmit); done
+          pnpm --filter @quorum/web typecheck
+      - name: Unit + integration tests (scripted model, no tokens)
+        run: |
+          pnpm --filter @quorum/engine test
+          pnpm --filter @quorum/rooms test
+      - name: Build
+        run: |
+          pnpm --filter @quorum/rooms build
+          pnpm --filter @quorum/web build
