@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+/* Light-only product: registry `dark:` utilities never apply. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Quorum — dark, cinematic design system.
+ * Near-black canvas, hairline borders, one signature gradient (violet → cyan), one hue per agent.
+ * Token names include shadcn's (--background, --foreground, …) so registry components fit without edits.
+ */
+:root {
+	--bg: #f7f6f2;
+	--surface: #ffffff;
+	--surface-2: #f2f1ec;
+	--surface-3: #e9e7e1;
+	--border: #e3e1da;
+	--border-strong: #cfccc3;
+	--text: #141413;
+	--muted: #5e5d59;
+	--faint: #9a988f;
+
+	--brand-1: #141413;
+	--brand-2: #141413;
+	--brand-3: #141413;
+	--accent: #e8590c;
+	--accent-ink: #ffffff;
+	--ring: rgb(232 89 12 / 0.35);
+
+	--ok: #2f7d4f;
+	--warn: #b7791f;
+	--bad: #c2412d;
+
+	--agent-scribe: #5e5d59;
+	--agent-fact_checker: #2f7d4f;
+	--agent-researcher: #2b6cb0;
+	--agent-decision_tracker: #5b4bb7;
+	--agent-action_owner: #b7791f;
+	--agent-devils_advocate: #c2412d;
+	--agent-memory_keeper: #3c5a99;
+
+	--background: var(--bg);
+	--foreground: var(--text);
+	--muted-foreground: var(--muted);
+	--card: var(--surface);
+	--primary: var(--text);
+	--radius: 0.625rem;
+
+	color-scheme: light;
+}
+
+@theme inline {
+	--color-bg: var(--bg);
+	--color-surface: var(--surface);
+	--color-surface-2: var(--surface-2);
+	--color-surface-3: var(--surface-3);
+	--color-border: var(--border);
+	--color-border-strong: var(--border-strong);
+	--color-text: var(--text);
+	--color-muted: var(--muted);
+	--color-faint: var(--faint);
+	--color-accent: var(--accent);
+	--color-accent-ink: var(--accent-ink);
+	--color-brand-1: var(--brand-1);
+	--color-brand-2: var(--brand-2);
+	--color-brand-3: var(--brand-3);
+	--color-ring: var(--ring);
+	--color-ok: var(--ok);
+	--color-warn: var(--warn);
+	--color-bad: var(--bad);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-card: var(--card);
+	--color-primary: var(--primary);
+	--font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+	--font-display: var(--font-serif), ui-serif, Georgia, serif;
+	--font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+	--animate-shiny-text: shiny-text 8s infinite;
+
+	@keyframes shiny-text {
+		0%,
+		90%,
+		100% {
+			background-position: calc(-100% - var(--shiny-width)) 0;
+		}
+		30%,
+		60% {
+			background-position: calc(100% + var(--shiny-width)) 0;
+		}
+	}
+	@keyframes spotlight {
+		0% {
+			opacity: 0;
+			transform: translate(-72%, -62%) scale(0.5);
+		}
+		100% {
+			opacity: 1;
+			transform: translate(-50%, -40%) scale(1);
+		}
+	}
+}
+
+@layer base {
+	* {
+		border-color: var(--border);
+	}
+	html {
+		background: var(--bg);
+		color: var(--text);
+		-webkit-tap-highlight-color: transparent;
+	}
+	body {
+		font-family: var(--font-sans);
+		font-feature-settings: "ss01", "cv11";
+	}
+	::selection {
+		background: rgb(232 89 12 / 0.18);
+	}
+	:focus-visible {
+		outline: 2px solid var(--ring);
+		outline-offset: 2px;
+	}
+	::-webkit-scrollbar {
+		width: 10px;
+		height: 10px;
+	}
+	::-webkit-scrollbar-thumb {
+		background: rgb(0 0 0 / 0.12);
+		border-radius: 999px;
+		border: 3px solid transparent;
+		background-clip: padding-box;
+	}
+}
+
+@utility text-gradient {
+	color: var(--text);
+}
+
+@utility text-brand {
+	color: var(--accent);
+}
+
+/* Glass surface: the building block for panels, nav and cards. */
+@utility glass {
+	background: var(--surface);
+	border: 1px solid var(--border);
+	box-shadow: 0 1px 2px rgb(20 20 19 / 0.04);
+}
+
+@utility bg-grid {
+	background-image: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+	}
+}
