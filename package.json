@@ -1,0 +1,24 @@
+{
+  "name": "quorum",
+  "private": true,
+  "packageManager": "pnpm@11.9.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "lint": "turbo run lint",
+    "spike": "pnpm --filter @quorum/engine spike",
+    "db:local": "pnpm --filter @quorum/db db:local",
+    "db:generate": "pnpm --filter @quorum/db db:generate",
+    "db:migrate": "pnpm --filter @quorum/db db:migrate",
+    "e2e": "pnpm --filter @quorum/web exec playwright test"
+  },
+  "devDependencies": {
+    "turbo": "2.11.9",
+    "typescript": "5.9.3"
+  }
+}
