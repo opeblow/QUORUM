@@ -207,13 +207,47 @@ Database on **Neon**, room servers on **Fly.io**, web on **Vercel**. Step-by-ste
 ## Project structure
 
 ```
-apps/
-  web/        Next.js app (landing, auth, dashboard, room, recap, uploads)
-  rooms/      real-time room server (Fastify + ws + Mozaik)
-packages/
-  engine/     agents, shared state, coordination, resilience (Mozaik adapter)
-  protocol/   zod wire contract
-  db/         Drizzle schema + migrations
+quorum/
+├── .github/
+│   └── workflows/            CI pipeline
+├── apps/
+│   ├── web/                  Next.js app (landing, auth, dashboard, room, recap, uploads)
+│   │   ├── e2e/              Playwright end-to-end tests
+│   │   ├── public/           static assets
+│   │   ├── scripts/          admin and maintenance scripts
+│   │   └── src/
+│   │       ├── app/          App Router pages and API routes
+│   │       ├── components/   UI components
+│   │       ├── hooks/        React hooks (room connection, media)
+│   │       └── lib/          auth, clients and helpers
+│   └── rooms/                real-time room server (Fastify + ws + Mozaik)
+│       ├── scripts/
+│       ├── src/
+│       └── test/
+├── packages/
+│   ├── engine/               agents, shared state, coordination, resilience
+│   │   ├── samples/
+│   │   ├── scripts/
+│   │   ├── src/
+│   │   │   ├── agents/       the agent team
+│   │   │   ├── context/      prompt context builders
+│   │   │   ├── domain/       Room, Utterance, Claim, Decision, ActionItem
+│   │   │   ├── memory/       mem0 team memory
+│   │   │   ├── mozaik/       Mozaik adapter (only place that imports it)
+│   │   │   ├── observers/    event observers
+│   │   │   └── tools/        allowlisted agent tools (web search)
+│   │   └── test/
+│   ├── protocol/             zod wire contract
+│   │   └── src/
+│   └── db/                   Drizzle schema + migrations
+│       ├── migrations/
+│       ├── scripts/
+│       └── src/schema/
+├── docker-compose.yml
+├── package.json
+├── pnpm-workspace.yaml
+├── turbo.json
+└── *.md                      product, architecture, plan and policy docs
 ```
 
 ## Roadmap
