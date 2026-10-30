@@ -1,0 +1,18 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+allowBuilds:
+  '@embedded-postgres/darwin-arm64': true
+  '@embedded-postgres/darwin-x64': true
+  '@embedded-postgres/linux-arm64': true
+  '@embedded-postgres/linux-x64': true
+  '@embedded-postgres/windows-x64': true
+  '@google/genai': false
+  better-sqlite3: false
+  esbuild: true
+  protobufjs: false
+  sharp: true
+  unrs-resolver: false
+overrides:
+  # drizzle-kit's legacy @esbuild-kit loader pins esbuild <=0.24.2 (GHSA-67mh-4wv8-2f99).
+  '@esbuild-kit/core-utils>esbuild': '^0.25.0'
