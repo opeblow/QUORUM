@@ -1,0 +1,16 @@
+# Sample meeting transcript for the engine spike. Format: "Speaker: text".
+# Contains a true claim, a false claim, decisions, commitments and fast agreement on purpose.
+Ana: Morning everyone. Quick one today, we need to pick the database for the new analytics service.
+Marko: I'd vote Postgres. It has been around since 1996 and the team already knows it well.
+Lena: ClickHouse is built for analytics though. It was open-sourced by Yandex in 2016.
+Ana: True, but we only expect a few million rows in the first year.
+Marko: Also, Postgres is the most popular database among professional developers in the Stack Overflow survey.
+Lena: Fair. Honestly Postgres sounds good to me.
+Marko: Agreed.
+Ana: Yes, makes sense. Let's go with Postgres for the analytics service.
+Lena: Great, love it.
+Marko: Fun fact, the Great Wall of China is visible from the Moon with the naked eye, so scale is relative.
+Ana: Ha. Okay, Marko, can you set up the staging database by Thursday?
+Marko: Yes, I'll set up the staging database by Thursday.
+Lena: I'll write the migration plan and share it by Friday.
+Ana: Perfect. Anything else? No? Then that's it, thanks all.
